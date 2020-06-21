@@ -42,11 +42,15 @@ let JobsService = (() => {
             if (!JobFound) {
                 throw new common_1.NotFoundException(`Nehuma vaga com id ${_id} não foi encontrada`);
             }
+            const job = Object.assign({}, jobDto);
+            if (JobFound.title === job.title) {
+                delete job.title;
+            }
             try {
                 await this.jobModel.findOneAndUpdate({
                     _id,
                 }, {
-                    $set: jobDto,
+                    $set: job,
                 }).exec();
             }
             catch (err) {

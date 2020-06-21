@@ -44,13 +44,19 @@ export class JobsService {
       );
     }
 
+    const job = { ...jobDto };
+    
+    if (JobFound.title === job.title) {
+      delete job.title;
+    }
+
     try {
       await this.jobModel.findOneAndUpdate(
         {
           _id,
         },
         {
-          $set: jobDto,
+          $set: job,
         }
       ).exec();
     } catch (err) {
