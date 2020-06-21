@@ -50,7 +50,7 @@ async function bootstrap() {
     })
   );
 
-  await app.listen(port);
+  await app.listen(port || 80);
   Logger.log(`Server started on port ${port}`, "Bootstrap");
 }
 
