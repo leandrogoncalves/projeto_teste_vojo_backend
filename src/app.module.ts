@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common'
 import { MongooseModule } from '@nestjs/mongoose'
 
 import { AuthModule } from '@/modules/auth/auth.module'
+import { JobsModule } from '@/modules/jobs/jobs.module';
 
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
@@ -15,7 +16,8 @@ import { AppService } from './app.service'
       useCreateIndex: true,
       useUnifiedTopology: true
     }),
-    AuthModule
+    AuthModule,
+    JobsModule
   ],
   providers: [AppService],
 })
